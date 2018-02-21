@@ -24,10 +24,10 @@ class ArticlesController < ApplicationController
  
     if @article.save
       redirect_to @article
-      $flag="Your Article saved"
+      flash[:notice]="Your Article saved"
 	else
       render 'new'
-      $flag="Your Article Not saved"
+      flash[:notice]="Your Article Not saved"
     end
   end
  
@@ -36,22 +36,21 @@ class ArticlesController < ApplicationController
  
     if @article.update(article_params)
 		
-      $flag="Your Article updated"
+      flash[:notice]="Your Article updated"
       redirect_to @article
     else
-      $flag="Your Article Not updated"
-   	 render 'edit'
+      flash[:notice]="Your Article Not updated"
+      render 'edit'
     end
   end
  
   def destroy
     @article = Article.find(params[:id])
     if @article.destroy
-	 $flag="Your Article deleted"
-     
-     redirect_to articles_path
+	 flash[:notice]="Your Article deleted"
+         redirect_to articles_path
 	else
-	 $flag="Your Article not deleted"
+	 flash[:notice]="Your Article not deleted"
 	end
 		
   end

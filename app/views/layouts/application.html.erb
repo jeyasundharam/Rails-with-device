@@ -60,6 +60,11 @@
    Hi <%= current_user.username %>...
 <% end %>
 <%= notice %></p>
+       <p class="notice">
+          <% if flash[:notice] %>
+                <%= flash[:notice] %>
+          <% end %>
+       </p>
        <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
